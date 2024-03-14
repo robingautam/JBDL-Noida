@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean class="org.example.model.Student" name="student">
+        <property name="id" value="1" />
+        <property name="name" value="Robin" />
+        <property name="email" value="rob@gmail.com" />
+       <!-- <property name="subjects">
+            <list>
+                <value>Hindi</value>
+                <value>English</value>
+                <value>Maths</value>
+                <value>Science</value>
+            </list>
+        </property>
+
+        <property name="marks">
+            <map>
+                <entry key="Hindi" value="23" />
+                <entry key="English" value="76" />
+            </map>
+        </property>-->
+
+        <property name="subjects" ref="subject" />
+        <property name="marks" ref="marks" />
+
+        <property name="address" ref="address" />
+    </bean>
+
+    <bean class="org.example.model.Address" id="address">
+        <property name="address1" value="Mayur Vihar" />
+        <property name="address2" value="Delhi" />
+        <property name="pincode" value="110092" />
+    </bean>
+
+
+
+    <bean class="org.example.model.Student" name="stp" p:id="12" p:name="Robin" p:email="robin@gmail.com">
+
+    </bean>
+
+    <util:list list-class="java.util.LinkedList" id="subject">
+        <value>Hindi</value>
+        <value>English</value>
+    </util:list>
+
+    <util:map map-class="java.util.HashMap" id="marks">
+        <entry key="Hindi" value="25" />
+        <entry key="English" value="95" />
+    </util:map>
+
+</beans>
